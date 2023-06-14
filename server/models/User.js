@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { models, model } from 'mongoose';
 import bcrypt from 'bcryptjs';
 import validator from 'validator';
 const UserSchema = new mongoose.Schema(
@@ -47,7 +47,6 @@ const UserSchema = new mongoose.Schema(
 
 // static signup method
 UserSchema.statics.signup = async function (name, email, password) {
-	
 	// //Validator for strong password
 	// if(!validator.isStrongPassword(password)){
 	//     throw Error('Input a strong password')
@@ -103,7 +102,7 @@ UserSchema.statics.fgtpswd = async function (email) {
 
 // //change password
 UserSchema.statics.changepsw = async function (_id, password, confirmPassword) {
-	let user = await this.findOne({ _id});
+	let user = await this.findOne({ _id });
 
 	if (!user) {
 		throw Error('User does not  exist!!');
@@ -131,6 +130,8 @@ UserSchema.statics.changepsw = async function (_id, password, confirmPassword) {
 };
 
 // module.exports = mongoose.model('User', userSchema);
+
+const User = models.user || model('user', UserSchema);
 
 const User = mongoose.model('User', UserSchema);
 export default User;
