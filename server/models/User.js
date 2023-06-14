@@ -1,4 +1,4 @@
-import mongoose, { models, model } from 'mongoose';
+import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 import validator from 'validator';
 const UserSchema = new mongoose.Schema(
@@ -129,7 +129,7 @@ UserSchema.statics.changepsw = async function (_id, password, confirmPassword) {
 	return hash;
 };
 
-const User = models.user || model('user', UserSchema);
+// module.exports = mongoose.model('User', userSchema);
 
-// const User = mongoose.model('User', UserSchema);
+const User = mongoose.model('User', UserSchema);
 export default User;
