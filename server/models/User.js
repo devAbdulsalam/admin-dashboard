@@ -129,8 +129,6 @@ UserSchema.statics.changepsw = async function (_id, password, confirmPassword) {
 	return hash;
 };
 
-// module.exports = mongoose.model('User', userSchema);
-
 const User = models.user || model('user', UserSchema);
 
 // const User = mongoose.model('User', UserSchema);
