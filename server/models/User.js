@@ -133,5 +133,5 @@ UserSchema.statics.changepsw = async function (_id, password, confirmPassword) {
 
 const User = models.user || model('user', UserSchema);
 
-const User = mongoose.model('User', UserSchema);
+// const User = mongoose.model('User', UserSchema);
 export default User;
